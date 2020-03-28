@@ -52,7 +52,7 @@ func (f *FSM) Call(event FSMEvent) FSMState {
 	}
 	if fn, ok := events[event]; ok {
 		oldState := f.getState()
-		f.setState(fn())
+		f.setState(fn()) // 执行handler，并返回state
 		newState := f.getState()
 		fmt.Println("状态从 [", oldState, "] 变成 [", newState, "]")
 		fmt.Println()
